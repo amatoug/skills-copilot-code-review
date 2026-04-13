@@ -1,11 +1,14 @@
 ---
-applyTo: "backend/**/*,*.py"
+applyTo: "src/app.py,src/backend/**/*.py"
 ---
 
 ## Backend Guidelines
 
-- All API endpoints must be defined in the `routers` folder.
-- Load example database content from the `database.py` file.
-- Error handling is only logged on the server. Do not propagate to the frontend.
-- Ensure all APIs are explained in the documentation.
-- Verify changes in the backend are reflected in the frontend (`src/static/**`). If possible breaking changes are found, mention them to the developer.
+- Keep API behavior stable unless the request explicitly changes it.
+- Validate request inputs and return explicit HTTP errors for invalid data.
+- Prefer clear router-level logic and keep data access concerns in the database module.
+- Use type hints for new or updated Python functions.
+- Avoid introducing new dependencies unless they are necessary.
+- Handle failures explicitly and avoid silent exception swallowing.
+- Keep endpoint responses consistent and predictable for frontend consumers.
+- Preserve readability and maintainability over premature optimization.
